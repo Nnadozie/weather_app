@@ -1,21 +1,11 @@
-# Progressive Web App Example
+A PWA implementation of [@Ashfin T2Y's] weather app design with a twist. Ashfin didn't provide the assests, so they're self created.
 
-This example uses [`next-pwa`](https://github.com/shadowwalker/next-pwa) to create a progressive web app (PWA) powered by [Workbox](https://developers.google.com/web/tools/workbox/).
+Using:
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/progressive-web-app)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example progressive-web-app progressive-web-app
-# or
-yarn create next-app --example progressive-web-app progressive-web-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- Next.js React framework
+- next-pwa
+- vercel for deployment
+- Typescript
+- Blender for cloud assets
+- open-weather api for data
+![design](https://cdn.dribbble.com/users/1619633/screenshots/14193355/media/9ed298edd4ad79e9eb0dce35692a9c2e.png?raw=true)
