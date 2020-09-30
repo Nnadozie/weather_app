@@ -1,4 +1,4 @@
-A PWA implementation of [@Ashfin T2Y's] weather app design with a twist. Ashfin didn't provide the assests, so they're self created.
+A PWA implementation of [@Ashfin T2Y's](https://dribbble.com/shots/14193355-Weatherly-Kit-P2) weather app design with a twist. Ashfin didn't provide the assests, so they're self created.
 
 Using:
 
