@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index/Home page renders correctly 1`] = `
+Array [
+  <header>
+    <p
+      data-testid="greeting"
+    >
+      Good Evening
+    </p>
+  </header>,
+  <main>
+    <section
+      aria-label="weather in saved locations"
+    >
+      <span>
+        Weather
+      </span>
+    </section>
+    <section
+      aria-label="weather in favorite location"
+    >
+      <span>
+        Weather
+      </span>
+    </section>
+  </main>,
+  <nav>
+    <a
+      href="/"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Home
+    </a>
+    <span>
+      search
+    </span>
+    <a
+      href="/explore"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      Explore
+    </a>
+    <span>
+      img
+    </span>
+  </nav>,
+]
+`;
