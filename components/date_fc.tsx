@@ -1,13 +1,6 @@
-import { GetStaticProps } from "next";
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  return {
-    props: {},
-  };
-};
-
 type DateFCProps = {
-  date: Date;
+  /** A date object, used in displaying a greeting */
+  date?: Date;
 };
 
 /**
@@ -15,13 +8,29 @@ type DateFCProps = {
  * Defaults to current location
  *
  * @example
- * <DateFC></DateFC>
+ * <DateFC date={new Date()} />
  */
 const DateFC = ({ date }: DateFCProps) => {
+  date = date ? date : new Date();
   const hour = date.getHours();
+
   const greeting: "Good Morning" | "Good Afternoon" | "Good Evening" =
     hour < 12 ? "Good Morning" : hour < 16 ? "Good Afternoon" : "Good Evening";
-  return <p data-testid="greeting">{greeting}</p>;
+
+  const readable_date = `${new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+  }).format(date)} ${new Intl.DateTimeFormat("en-US", {
+    month: "long",
+  }).format(date)}, ${new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+  }).format(date)}`;
+
+  return (
+    <>
+      <p>{greeting}</p>
+      <p>{readable_date}</p>
+    </>
+  );
 };
 
 export default DateFC;
