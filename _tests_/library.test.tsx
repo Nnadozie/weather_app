@@ -3,7 +3,7 @@ import Index from "../pages/index";
 import renderer from "react-test-renderer";
 import { render, screen } from "@testing-library/react";
 import DateFC from "../components/date_fc";
-import WeatherTilesFactory from "../components/weather_tiles_factory";
+import WeatherTilesFactory from "../utils/weather_tiles_factory";
 import HorizontalScroll from "../components/horizontal_scroll";
 
 describe("Index/Home page", () => {

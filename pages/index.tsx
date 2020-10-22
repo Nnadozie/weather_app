@@ -13,15 +13,7 @@ type IndexFCProps = {
   greeting: JSX.Element;
 
   /** Horizontally scrollable view of weather tiles each showing weather in a saved location */
-  saved_locations?: JSX.Element;
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const greeting = <DateFC date={new Date()} />;
-  const saved_locations: JSX.Element[] = [];
-  return {
-    props: { greeting: greeting, saved_locations: saved_locations },
-  };
+  saved_locations?: JSX.Element[];
 };
 
 /**
@@ -39,12 +31,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
  * <Index greeting={<DateFC />} saved_locations={weather_tiles} />
  */
 function Index(props: IndexFCProps) {
+  let { greeting, saved_locations } = props;
+  greeting = greeting ? greeting : <DateFC date={new Date()} />;
+  saved_locations = saved_locations ? saved_locations : [];
   return (
     <>
-      <header>{props.greeting}</header>
+      <header>{greeting}</header>
       <main>
         <section aria-label="weather in saved locations">
-          {props.saved_locations}
+          {saved_locations}
         </section>
         <section aria-label="weather in favorite location">
           <WeatherTile withTime={false}></WeatherTile>
