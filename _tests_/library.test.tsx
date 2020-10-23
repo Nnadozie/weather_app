@@ -5,6 +5,63 @@ import { render, screen } from "@testing-library/react";
 import DateFC from "../components/date_fc";
 import WeatherTilesFactory from "../utils/weather_tiles_factory";
 import HorizontalScroll from "../components/horizontal_scroll";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+
+const server = setupServer(
+  rest.get("/data/2.5/weather", (req, res, ctx) => {
+    return res(
+      ctx.json({
+        coord: {
+          lon: 145.77,
+          lat: -16.92,
+        },
+        weather: [
+          {
+            id: 802,
+            main: "Clouds",
+            description: "scattered clouds",
+            icon: "03n",
+          },
+        ],
+        base: "stations",
+        main: {
+          temp: 300.15,
+          pressure: 1007,
+          humidity: 74,
+          temp_min: 300.15,
+          temp_max: 300.15,
+        },
+        visibility: 10000,
+        wind: {
+          speed: 3.6,
+          deg: 160,
+        },
+        clouds: {
+          all: 40,
+        },
+        dt: 1485790200,
+        sys: {
+          type: 1,
+          id: 8166,
+          message: 0.2064,
+          country: "AU",
+          sunrise: 1485720272,
+          sunset: 1485766550,
+        },
+        id: 2172797,
+        name: "Cairns",
+        cod: 200,
+      })
+    );
+  })
+);
+
+beforeAll(() => server.listen());
+afterEach(() => {
+  server.resetHandlers();
+});
+afterAll(() => server.close());
 
 describe("Index/Home page", () => {
   it("renders correctly", () => {
@@ -112,7 +169,32 @@ describe("Index/Home page", () => {
     ).toBeEmptyDOMElement();
   });
 
-  test("when I have saved locations, there are saved location weather tiles displayed", () => {});
+  test("when I have 4 saved locations, there are 4 saved location weather tiles displayed", () => {
+    const saved_locations: string[] = [
+      "Ibadan",
+      "Calgary",
+      "Newcastle",
+      "Joannesburg",
+    ];
+    const weather_tiles: JSX.Element[] = WeatherTilesFactory({
+      locations: saved_locations,
+    });
+
+    render(
+      <Index
+        greeting={<DateFC />}
+        saved_locations={<HorizontalScroll tiles={weather_tiles} />}
+      />
+    );
+
+    expect(
+      screen.getByLabelText("weather in saved locations").childElementCount
+    ).toEqual(saved_locations.length);
+  });
+
+  test("when I have a saved location with a given weather forecast, the saved location weather tile displays the right forecast", () => {
+    //remember to mock forecast api
+  });
 });
 
 test.todo(

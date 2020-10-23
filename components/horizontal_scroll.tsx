@@ -10,7 +10,7 @@ type HorizontalScrollProp = {
  * <HorizontalScroll tiles={weather_tiles} />
  */
 const HorizontalScroll = (props: HorizontalScrollProp) => {
-  return <></>;
+  return <>{props.tiles}</>;
 };
 
 export default HorizontalScroll;

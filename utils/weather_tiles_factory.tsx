@@ -1,3 +1,5 @@
+import WeatherTile from "../components/weather_tile";
+
 type WeatherTilesFactoryProp = {
   /** A collection of locations for which weather details are required */
   locations: string[];
@@ -12,6 +14,10 @@ type WeatherTilesFactoryProp = {
  */
 const WeatherTilesFactory = (props: WeatherTilesFactoryProp): JSX.Element[] => {
   const tiles: JSX.Element[] = [];
+
+  props.locations.forEach((location) => {
+    tiles.push(<WeatherTile />);
+  });
   return tiles;
 };
 

@@ -13,7 +13,7 @@ type IndexFCProps = {
   greeting: JSX.Element;
 
   /** Horizontally scrollable view of weather tiles each showing weather in a saved location */
-  saved_locations?: JSX.Element[];
+  saved_locations?: JSX.Element;
 };
 
 /**
@@ -28,12 +28,15 @@ type IndexFCProps = {
       locations: saved_locations,
     });
 
- * <Index greeting={<DateFC />} saved_locations={weather_tiles} />
+ * <Index
+        greeting={<DateFC />}
+        saved_locations={<HorizontalScroll tiles={weather_tiles} />}
+      />
  */
 function Index(props: IndexFCProps) {
   let { greeting, saved_locations } = props;
   greeting = greeting ? greeting : <DateFC date={new Date()} />;
-  saved_locations = saved_locations ? saved_locations : [];
+  saved_locations = saved_locations ? saved_locations : <></>;
   return (
     <>
       <header>{greeting}</header>
