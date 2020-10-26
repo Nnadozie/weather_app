@@ -192,8 +192,29 @@ describe("Index/Home page", () => {
     ).toEqual(saved_locations.length);
   });
 
-  test("when I have a saved location with a given weather forecast, the saved location weather tile displays the right forecast", () => {
-    //remember to mock forecast api
+  test(`when I have a saved location with a given weather forecast, 
+  the saved location weather tile displays the right forecast`, () => {
+    const saved_locations: string[] = ["Cairns"];
+    const weather_tiles: JSX.Element[] = WeatherTilesFactory({
+      locations: saved_locations,
+    });
+
+    render(
+      <Index
+        greeting={<DateFC />}
+        saved_locations={<HorizontalScroll tiles={weather_tiles} />}
+      />
+    );
+
+    const tree = screen.getByLabelText("weather in saved locations");
+
+    expect(tree).toHaveTextContent("Cairns");
+    expect(tree).toHaveTextContent("300.15°");
+    expect(tree).toHaveTextContent("12: 30: 56");
+    expect(tree).toHaveTextContent("Hour");
+    expect(tree).toHaveTextContent("Min");
+    expect(tree).toHaveTextContent("Hour");
+    expect(tree).toContainElement(null); //should be svg cloud element
   });
 });
 
